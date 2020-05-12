@@ -33,6 +33,10 @@ public class Hello {
         String name = "Евгений";
         helloName(name);
 
+        System.out.println("\nЗадание 6: метод делает проверку високосный год или нет");
+        int year = 2016;
+        System.out.println("Год = " + year + "\nГод високосный? -> " + checkYear(year));
+
     }
     static int calc(int a, int b, int c, int d) {
         return a * (b + (c / d));
@@ -66,6 +70,18 @@ public class Hello {
 
     static void helloName(String name){
         System.out.println("Привет, " + name);
+    }
+
+    static boolean checkYear(int a) {
+        boolean i = false;
+        if (a % 100 == 0) {
+            i = true;
+        } else if (a % 400 == 0){
+            i = true;
+        } else if (a % 4 == 0){
+            i = true;
+        }
+        return i;
     }
 
 }
