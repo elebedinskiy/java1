@@ -16,7 +16,7 @@ public class Hello {
         a = 4;
         b = 6;
         c = 8;
-        d = 10;
+        d = -10;
         System.out.println("\nЗадание 1: метод возвратит результат вычисления формулы");
         System.out.println("a * (b + (c / d)) = " + calc(a,b,c,d));
 
@@ -25,6 +25,10 @@ public class Hello {
 
         System.out.println("\nЗадание 3: метод возвратит true, если число больше или равно 0");
         System.out.println("Число c = " + c + "\nЧисло положительное? -> " + checkNum(c));
+
+        System.out.println("\nЗадание 4: метод возвратит true, если число меньше 0");
+        System.out.println("Число d = " + d + "\nЧисло отрицательное? -> " + checkNum2(d));
+
 
     }
     static int calc(int a, int b, int c, int d) {
@@ -44,6 +48,14 @@ public class Hello {
     static boolean checkNum(int a) {
         boolean i = false;
         if (a >= 0) {
+            i = true;
+        }
+        return i;
+    }
+
+    static boolean checkNum2(int a) {
+        boolean i = false;
+        if (a < 0) {
             i = true;
         }
         return i;
