@@ -23,6 +23,9 @@ public class Hello {
         System.out.println("\nЗадание 2: метод возвратит true, если сумма числе неходится между 10 и 20");
         System.out.println("a = " + a + ", b = " + b + "\nСумма a + b лежит между 10 и 20? -> " + checkSum(a,b));
 
+        System.out.println("\nЗадание 3: метод возвратит true, если число больше или равно 0");
+        System.out.println("Число c = " + c + "\nЧисло положительное? -> " + checkNum(c));
+
     }
     static int calc(int a, int b, int c, int d) {
         return a * (b + (c / d));
@@ -36,6 +39,14 @@ public class Hello {
             }
         }
     return i;
+    }
+
+    static boolean checkNum(int a) {
+        boolean i = false;
+        if (a >= 0) {
+            i = true;
+        }
+        return i;
     }
 
 }
