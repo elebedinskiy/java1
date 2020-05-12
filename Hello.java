@@ -17,11 +17,25 @@ public class Hello {
         b = 6;
         c = 8;
         d = 10;
+        System.out.println("\nЗадание 1: метод возвратит результат вычисления формулы");
         System.out.println("a * (b + (c / d)) = " + calc(a,b,c,d));
+
+        System.out.println("\nЗадание 2: метод возвратит true, если сумма числе неходится между 10 и 20");
+        System.out.println("a = " + a + ", b = " + b + "\nСумма a + b лежит между 10 и 20? -> " + checkSum(a,b));
+
     }
     static int calc(int a, int b, int c, int d) {
         return a * (b + (c / d));
     }
 
+    static boolean checkSum(int a, int b) {
+        boolean i = false;
+        if (a + b > 10) {
+            if (a + b < 20) {
+                i = true;
+            }
+        }
+    return i;
+    }
 
 }
