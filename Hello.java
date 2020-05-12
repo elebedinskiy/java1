@@ -29,6 +29,9 @@ public class Hello {
         System.out.println("\nЗадание 4: метод возвратит true, если число меньше 0");
         System.out.println("Число d = " + d + "\nЧисло отрицательное? -> " + checkNum2(d));
 
+        System.out.println("\nЗадание 5: метод возвратит приветствие пользователя по имени");
+        String name = "Евгений";
+        helloName(name);
 
     }
     static int calc(int a, int b, int c, int d) {
@@ -59,6 +62,10 @@ public class Hello {
             i = true;
         }
         return i;
+    }
+
+    static void helloName(String name){
+        System.out.println("Привет, " + name);
     }
 
 }
