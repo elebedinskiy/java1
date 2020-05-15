@@ -45,6 +45,14 @@ public class Hello {
         diagonalArray(arr4);
         printArray(arr4);
 
+        // Задание 5
+        int[] arr5 = new int[arr3.length];
+        arr5 = arr3; // За исходный одномерный массив примем полученный из задания 3
+        System.out.println("\nЗадание 5: требуется узнать максимальное и минимальное значение");
+        System.out.println("Исходный массив: " + Arrays.toString(arr5));
+        System.out.println("Максимальное значение: " + maxArrayValue(arr5));
+        System.out.println("Минимальное значение: " + minArrayValue(arr5));
+
     }
 
     // Метод для вывода массива в консоль
@@ -63,5 +71,27 @@ public class Hello {
             arr[i][j] = 1;
             arr[a][j] = 1; // Задействовал третью переменную "a" для перебора с конца строки
         }
+    }
+
+    // Метод возвращающий минимальное значение одномерного массива
+    static int minArrayValue(int arr[]) {
+        int min = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] < min){
+                min = arr[i];
+            }
+        }
+        return min;
+    }
+
+    // Метод возвращающий минимальное значение одномерного массива
+    static int maxArrayValue(int arr[]) {
+        int max = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > max){
+                max = arr[i];
+            }
+        }
+        return max;
     }
 }
