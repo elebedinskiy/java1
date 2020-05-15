@@ -53,6 +53,12 @@ public class Hello {
         System.out.println("Максимальное значение: " + maxArrayValue(arr5));
         System.out.println("Минимальное значение: " + minArrayValue(arr5));
 
+        // Задание 6
+        int[] arr6 = {1, 2, 3, 3, 2, 1};
+        System.out.println("\nЗадание 6: метод вернёт true, если массив можно разделить на две равные по сумме части");
+        System.out.println("Исходный массив: " + Arrays.toString(arr6));
+        System.out.println("В массиве есть такое место? -> " + checkBalance(arr6));
+
     }
 
     // Метод для вывода массива в консоль
@@ -93,5 +99,25 @@ public class Hello {
             }
         }
         return max;
+    }
+
+    // Метод вернёт true, если массив можно разделить на две равные по сумме части
+    static boolean checkBalance(int arr[]) {
+
+        // вычислим сумму элементов массива
+        int sum = 0, sum1 = 0, sum2 = 0;
+        for (int i =  0; i < arr.length; i++){
+            sum = sum + arr[i];
+        }
+        // по одному элементу перемещаем из одной суммы в другую
+        for (int i =  0; i < arr.length; i++) {
+            sum1 = sum1 + arr[i];
+            sum2 = sum - sum1;
+            // сравниваем суммы
+            if (sum1 == sum2) {
+                return true;
+            }
+        }
+        return false;
     }
 }
