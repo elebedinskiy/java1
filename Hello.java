@@ -31,12 +31,37 @@ public class Hello {
         int[] arr3 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
         System.out.println("\nЗадание 3: числа меньшие 6 в исходном массиве умножить на 2");
         System.out.println("Исходный массив: " + Arrays.toString(arr3));
-        for (int i = 0; i < arr3.length; i++){
-            if (arr3[i] < 6){
+        for (int i = 0; i < arr3.length; i++) {
+            if (arr3[i] < 6) {
                 arr3[i] = arr3[i] * 2;
             }
         }
         System.out.println("Обработанный массив: " + Arrays.toString(arr3));
+
+        // Задание 4
+        int square = 10; // длинна квадратной сетки массива
+        int[][] arr4 = new int[square][square];
+        System.out.println("\nЗадание 4: диагональ квадратного двумерного массива заполнить значениями 1");
+        diagonalArray(arr4);
+        printArray(arr4);
+
     }
 
+    // Метод для вывода массива в консоль
+    static void printArray(int arr[][]) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.print(arr[i][j] + "  ");
+            }
+            System.out.println();
+        }
+    }
+
+    // Метод для заполнения квардратного массива по диагонали значениями 1
+    static void diagonalArray(int arr[][]) {
+        for (int i = 0, j = 0, a = (arr.length - 1); i < arr.length; i++, j++, a--) {
+            arr[i][j] = 1;
+            arr[a][j] = 1; // Задействовал третью переменную "a" для перебора с конца строки
+        }
+    }
 }
