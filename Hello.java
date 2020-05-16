@@ -1,5 +1,6 @@
 package ru.elebedinskiy.java1;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Hello {
@@ -59,6 +60,16 @@ public class Hello {
         System.out.println("Исходный массив: " + Arrays.toString(arr6));
         System.out.println("В массиве есть такое место? -> " + checkBalance(arr6));
 
+        // Задание 7
+        int[] arr71 = {1, 2, 3, 4, 5, 6};
+        int[] arr72 = {1, 2, 3, 4, 5, 6};
+        int n1 = 2;
+        int n2 = -2;
+        System.out.println("\nЗадание 7: требуется сместить элементы массива на n позиций, по принципу карусели");
+        System.out.print("Исходный массив " + Arrays.toString(arr71) + " сместим на n = " + n1);
+        System.out.println(" получится массив: " + Arrays.toString(moveArrayElements(arr71, n1)));
+        System.out.print("Исходный массив " + Arrays.toString(arr72) + " сместим на n = " + n2);
+        System.out.println(" получится массив: " + Arrays.toString(moveArrayElements(arr72, n2)));
     }
 
     // Метод для вывода массива в консоль
@@ -119,5 +130,38 @@ public class Hello {
             }
         }
         return false;
+    }
+
+    // Метод вернёт массив смещённый на n позиций вправо или влево в зависимости от значения "n"
+    // Без использования вспомогательного массива, только с одной новой переменной
+    static int[] moveArrayElements(int[] arr, int n) {
+        if (n >= 0){ // если n положительное, то цикл смещений будет вправо
+            for (int i = 1; i <= n; i++){
+                for (int j = 1, buffer = arr[arr.length - 1]; j < arr.length + 1; j++) {
+                    /* если это последняя итерация, то последний сохранённый элемент
+                    запишем в нулевой элемент массива и выйдем из цикла */
+                    if (j == arr.length){
+                        arr[0] = buffer; // сохранённый последний элемент запишем в 0 элемент массива
+                        break;
+                    }
+                    // смещение с конца: в последний элемент запишем предыдущий элемент, и т.д.
+                    arr[arr.length - j] = arr[arr.length - 1 - j];
+                }
+            }
+        } else if (n < 0) { // если n отрицательное, то цикл смещений будет влево
+            for (int i = n; i < 0; i++){
+                for (int j = arr.length - 1, buffer = arr[0]; j >= 0; j--) {
+                    /* если это последняя итерация, то нулевой сохранённый элемент
+                    запишем в последний элемент массива и выйдем из цикла */
+                    if (j == 0){
+                        arr[arr.length - 1] = buffer; // сохранённый последний элемент запишем в 0 элемент массива
+                        break;
+                    }
+                    // смещение с начала: в первый элемент запишем следующий элемент, и т.д.
+                    arr[arr.length - j - 1] = arr[arr.length - j];
+                }
+            }
+        }
+        return arr;
     }
 }
