@@ -83,7 +83,7 @@ public class Hello {
     }
 
     // Метод для заполнения квардратного массива по диагонали значениями 1
-    static void diagonalArray(int arr[][]) {
+    static void diagonalArray(int[][] arr) {
         for (int i = 0, j = 0, a = (arr.length - 1); i < arr.length; i++, j++, a--) {
             arr[i][j] = 1;
             arr[a][j] = 1; // Задействовал третью переменную "a" для перебора с конца строки
@@ -91,7 +91,7 @@ public class Hello {
     }
 
     // Метод возвращающий минимальное значение одномерного массива
-    static int minArrayValue(int arr[]) {
+    static int minArrayValue(int[] arr) {
         int min = arr[0];
         for (int i = 1; i < arr.length; i++) {
             if (arr[i] < min){
@@ -102,7 +102,7 @@ public class Hello {
     }
 
     // Метод возвращающий минимальное значение одномерного массива
-    static int maxArrayValue(int arr[]) {
+    static int maxArrayValue(int[] arr) {
         int max = arr[0];
         for (int i = 1; i < arr.length; i++) {
             if (arr[i] > max){
@@ -113,7 +113,7 @@ public class Hello {
     }
 
     // Метод вернёт true, если массив можно разделить на две равные по сумме части
-    static boolean checkBalance(int arr[]) {
+    static boolean checkBalance(int[] arr) {
 
         // вычислим сумму элементов массива
         int sum = 0, sum1 = 0, sum2 = 0;
