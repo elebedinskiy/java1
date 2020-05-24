@@ -27,35 +27,26 @@ public class Hello {
         for (int i = numberOfAttempts; i >= 0; i--){
             if (i == 0) {
                 System.out.println("\nПопыток больше нет. Вы проиграли");
-                int userChoice = getNumbeFromScannerAndValid("\n1 - Играем ещё раз. 0 - нет", 0, 1);
-                if (userChoice == 1){
-                    System.out.println("Отлично");
-                    gameOne();
-                    break;
-                } else {
-                    System.out.println("Пользователь завершил игру.");
-                    break;
-                }
+                break;
             }
             int userEnterNumber = getNumbeFromScannerAndValid("\nВведите число от 0 до 9", 0, 9);
             System.out.println("Вы ввели = " + userEnterNumber);
 
             if (userEnterNumber == secretRundomNumber) {
                 System.out.println("Вы угадали! Это победа!");
-                int userChoice = getNumbeFromScannerAndValid("\n1 - Играем ещё раз. 0 - нет", 0, 1);
-                if (userChoice == 1){
-                    System.out.println("Отлично");
-                    gameOne();
-                    break;
-                } else {
-                    System.out.println("Пользователь завершил игру.");
-                    break;
-                }
+                break;
             } else if (userEnterNumber > secretRundomNumber) {
                 System.out.println("Вы ввели слишком большое число.");
             } else {
                 System.out.println("Вы ввели слишком маленькое число.");
             }
+        }
+        int userChoice = getNumbeFromScannerAndValid("\n1 - Играем ещё раз. 0 - нет", 0, 1);
+        if (userChoice == 1){
+            System.out.println("Отлично");
+            gameOne();
+        } else {
+            System.out.println("Пользователь завершил игру.");
         }
     }
 
