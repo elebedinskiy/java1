@@ -1,5 +1,7 @@
 package ru.elebedinskiy.java1;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -58,10 +60,22 @@ public class Hello {
                 "olive", "pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"
         };
         Random rand = new Random();
-        int secretRundomElementsWords = rand.nextInt(words.length); // Случайный индекс элемента массива words
-        System.out.println("Загадали: " + words[secretRundomElementsWords]);
 
-        // Пишем вторую игру
+        // присвоили строке значение загаданного элемента массива
+        String secretRundomWords = words[rand.nextInt(words.length)];
+        System.out.println("Загадали: " + secretRundomWords);
+
+        // присвоили строке введённое пользователем значение
+        Scanner sc = new Scanner(System.in);
+        String userInputWord = sc.nextLine();
+        System.out.println("Введённое слово: " + userInputWord);
+
+        /* тут должна быть обработка
+        .
+        .
+        .
+        .
+         */
 
         int userChoice = getNumbeFromScannerAndValid("\n1 - Играем ещё раз. 0 - нет", 0, 1);
         if (userChoice == 1){
