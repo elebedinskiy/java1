@@ -52,7 +52,24 @@ public class Hello {
 
     public static void gameTwo() {
         System.out.println("Играем в 'Угадай слово'");
+        String[] words = {
+                "apple", "orange", "lemon", "banana", "apricot", "avocado", "broccoli", "carrot",
+                "cherry", "garlic", "grape", "melon", "leak", "kiwi", "mango", "mushroom", "nut",
+                "olive", "pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"
+        };
+        Random rand = new Random();
+        int secretRundomElementsWords = rand.nextInt(words.length); // Случайный индекс элемента массива words
+        System.out.println("Загадали: " + words[secretRundomElementsWords]);
+
         // Пишем вторую игру
+
+        int userChoice = getNumbeFromScannerAndValid("\n1 - Играем ещё раз. 0 - нет", 0, 1);
+        if (userChoice == 1){
+            System.out.println("Отлично");
+            gameTwo();
+        } else {
+            System.out.println("Пользователь завершил игру.");
+        }
     }
 
     public static int getNumbeFromScannerAndValid(String message, int min, int max) {
