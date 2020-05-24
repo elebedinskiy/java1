@@ -10,12 +10,11 @@ public class Hello {
     public static void main(String[] args) {
         int userChoice = getNumbeFromScannerAndValid("Выберите игру: 1 - угадай число, 2 - угадай слово.", 1, 2);
         System.out.println("Вы выбрали = " + userChoice);
-        if (userChoice == 1){
+        if (userChoice == 1) {
             gameOne();
-        } else if (userChoice == 2) {
+        } else {
             gameTwo();
         }
-
     }
 
     public static void gameOne() {
@@ -28,7 +27,7 @@ public class Hello {
         for (int i = numberOfAttempts; i >= 0; i--){
             if (i == 0) {
                 System.out.println("\nПопыток больше нет. Вы проиграли");
-                int userChoice = getNumbeFromScannerAndValid("1 - Играем ещё раз? 0 - нет", 0, 1);
+                int userChoice = getNumbeFromScannerAndValid("\n1 - Играем ещё раз. 0 - нет", 0, 1);
                 if (userChoice == 1){
                     System.out.println("Отлично");
                     gameOne();
@@ -43,7 +42,7 @@ public class Hello {
 
             if (userEnterNumber == secretRundomNumber) {
                 System.out.println("Вы угадали! Это победа!");
-                int userChoice = getNumbeFromScannerAndValid("1 - Играем ещё раз? 0 - нет", 0, 1);
+                int userChoice = getNumbeFromScannerAndValid("\n1 - Играем ещё раз. 0 - нет", 0, 1);
                 if (userChoice == 1){
                     System.out.println("Отлично");
                     gameOne();
@@ -70,6 +69,9 @@ public class Hello {
         do {
             System.out.println(message);
             userEnterNumber = sc.nextInt();
+            if (userEnterNumber > max || userEnterNumber < min){
+                System.out.println("Будьте внимательнее при вводе.");
+            }
         } while (userEnterNumber > max || userEnterNumber < min);
         return userEnterNumber;
     }
