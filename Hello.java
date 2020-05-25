@@ -1,10 +1,9 @@
 package ru.elebedinskiy.java1;
 
-import java.awt.print.Pageable;
-
 public class Hello {
     public static void main(String[] args) {
 
+        // Объявили массив класса Employees размером 5 элементов
         Employees[] employeesArray = new Employees[5];
 
         employeesArray[0] = new Employees("Петров", "Петр", "Петрович",
