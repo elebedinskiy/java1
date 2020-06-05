@@ -100,5 +100,12 @@ public class Window extends JFrame {
                 System.exit(0);
             }
         });
+
+        button7.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
     }
 }
