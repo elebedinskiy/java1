@@ -1,6 +1,6 @@
 package ru.elebedinskiy.java1;
 
-import java.util.ArrayList;
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Hello {
@@ -10,34 +10,16 @@ public class Hello {
         // Задание 1
         int[] arr = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
         System.out.println("Задание 1: заменить 0 на 1, 1 на 0 в исходном массиве");
-        System.out.println("Исходный массив: " + Arrays.toString(arr));
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == 0) {
-                arr[i] = 1;
-            } else if (arr[i] == 1) {
-                arr[i] = 0;
-            }
-        }
-        System.out.println("Изменённый массив: " + Arrays.toString(arr));
+        convertArray(arr);
 
         // Задание 2
-        int[] arr2 = new int[8];
-        for (int i = 0, j = 0; i < arr2.length; i++, j = j + 3) {
-            arr2[i] = j; // для шага задействована вторая переменная j
-        }
         System.out.println("\nЗадание 2: заполнить в цикле массив длинной 8 и шагом 3:");
-        System.out.println("Результат: " + Arrays.toString(arr2));
+        System.out.println("Результат: " + Arrays.toString(createArray(8, 3)));
 
         // Задание 3
         int[] arr3 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
         System.out.println("\nЗадание 3: числа меньшие 6 в исходном массиве умножить на 2");
-        System.out.println("Исходный массив: " + Arrays.toString(arr3));
-        for (int i = 0; i < arr3.length; i++) {
-            if (arr3[i] < 6) {
-                arr3[i] = arr3[i] * 2;
-            }
-        }
-        System.out.println("Обработанный массив: " + Arrays.toString(arr3));
+        arrayProcIfLessThan6ThenMultiplyBy2(arr3, 6, 2);
 
         // Задание 4
         int square = 10; // длинна квадратной сетки массива
@@ -47,8 +29,7 @@ public class Hello {
         printArray(arr4);
 
         // Задание 5
-        int[] arr5 = new int[arr3.length];
-        arr5 = arr3; // За исходный одномерный массив примем полученный из задания 3
+        int[] arr5 = arr3; // За исходный одномерный массив примем полученный из задания 3
         System.out.println("\nЗадание 5: требуется узнать максимальное и минимальное значение");
         System.out.println("Исходный массив: " + Arrays.toString(arr5));
         System.out.println("Максимальное значение: " + maxArrayValue(arr5));
@@ -58,7 +39,7 @@ public class Hello {
         int[] arr6 = {1, 2, 3, 3, 2, 1};
         System.out.println("\nЗадание 6: метод вернёт true, если массив можно разделить на две равные по сумме части");
         System.out.println("Исходный массив: " + Arrays.toString(arr6));
-        System.out.println("В массиве есть такое место? -> " + checkBalance(arr6));
+        System.out.println("В массиве есть такое место? -> " + thisArrCanBeDividedIntoEqualParts(arr6));
 
         // Задание 7
         int[] arr71 = {1, 2, 3, 4, 5, 6};
@@ -70,6 +51,39 @@ public class Hello {
         System.out.println(" получится массив: " + Arrays.toString(moveArrayElements(arr71, n1)));
         System.out.print("Исходный массив " + Arrays.toString(arr72) + " сместим на n = " + n2);
         System.out.println(" получится массив: " + Arrays.toString(moveArrayElements(arr72, n2)));
+    }
+
+    // метод обработает массив, значения меньше a умножит на b
+    public static void arrayProcIfLessThan6ThenMultiplyBy2(int[] array, int a, int b) {
+        System.out.println("Исходный массив: " + Arrays.toString(array));
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] < a) {
+                array[i] = array[i] * b;
+            }
+        }
+        System.out.println("Обработанный массив: " + Arrays.toString(array));
+    }
+
+    // метод создаст массив с заданным шагом и длиной
+    public static int[] createArray(int length, int step) {
+        int[] array = new int[length];
+        for (int i = 0, j = 0; i < array.length; i++, j = j + step) {
+            array[i] = j;
+        }
+        return array;
+    }
+
+    // Метод обработает массив, заменит 0 на 1, 1 на 0, и выведет его в консоль
+    public static void convertArray(int[] array) {
+        System.out.println("Исходный массив: " + Arrays.toString(array));
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == 0) {
+                array[i] = 1;
+            } else if (array[i] == 1) {
+                array[i] = 0;
+            }
+        }
+        System.out.println("Изменённый массив: " + Arrays.toString(array));
     }
 
     // Метод для вывода массива в консоль
@@ -84,9 +98,9 @@ public class Hello {
 
     // Метод для заполнения квардратного массива по диагонали значениями 1
     static void diagonalArray(int[][] arr) {
-        for (int i = 0, j = 0, a = (arr.length - 1); i < arr.length; i++, j++, a--) {
+        for (int i = 0, j = 0; i < arr.length; i++, j++) {
             arr[i][j] = 1;
-            arr[a][j] = 1; // Задействовал третью переменную "a" для перебора с конца строки
+            arr[arr.length - 1 - i][j] = 1; // обратная диагональ
         }
     }
 
@@ -101,7 +115,7 @@ public class Hello {
         return min;
     }
 
-    // Метод возвращающий минимальное значение одномерного массива
+    // Метод возвращающий максимальное значение одномерного массива
     static int maxArrayValue(int[] arr) {
         int max = arr[0];
         for (int i = 1; i < arr.length; i++) {
@@ -113,7 +127,7 @@ public class Hello {
     }
 
     // Метод вернёт true, если массив можно разделить на две равные по сумме части
-    static boolean checkBalance(int[] arr) {
+    static boolean thisArrCanBeDividedIntoEqualParts(int[] arr) {
 
         // вычислим сумму элементов массива
         int sum = 0, sum1 = 0, sum2 = 0;
