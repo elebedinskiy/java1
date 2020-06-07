@@ -2,14 +2,14 @@ package ru.elebedinskiy.java1;
 
 public class Employees {
 
-    String surname;
-    String name;
-    String patronymic;
-    String position;
-    String email;
-    String phone;
-    int salary;
-    int age;
+    private String surname;
+    private String name;
+    private String patronymic;
+    private String position;
+    private String email;
+    private String phone;
+    private int salary;
+    private int age;
 
     Employees(String surname, String name, String patronymic, String position, String email, String phone, int salary, int age){
         this.surname = surname;
@@ -22,8 +22,11 @@ public class Employees {
         this.age = age;
     }
 
-    public static void printEmployeeInfo(String surname, String name, String patronymic, String position, String email, String phone, int salary, int age){
-        System.out.println("ФИО: " + surname + " " + name + " " +  patronymic + ", должность: " + position +
-                ", email: " + email + ", тел.: " + phone + ", зп: " + salary + ", возраст: " + age + " лет");
+    public void printInfo(){
+        System.out.println("ФИО: " + this.surname + " " + this.name + " " +  this.patronymic + ", должность: " + this.position +
+                ", email: " + this.email + ", тел.: " + this.phone + ", зп: " + this.salary + ", возраст: " + this.age + " лет");
+    }
+    public int getAge(){
+        return age;
     }
 }

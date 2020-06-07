@@ -18,30 +18,24 @@ public class Hello {
                 "Главный бухгалтер", "finance@contoso.com", "88005554433", 120000, 45);
 
         // вызов метода с условием
-        final int age40AndOlder = 40; // возраст 40 и старше
-        printPersonsAge40AndOlder(employeesArray, age40AndOlder);
+        printPersonsAge40AndOlder(employeesArray, 39);
 
     }
 
     // метод выведет список сотрудников "age" лет и старше
     static void printPersonsAge40AndOlder(Employees[] employeesArray, int age){
-        System.out.println("Сотрудники, возраст которых " + age + " лет и старше:");
+        System.out.println("Сотрудники, старше " + age + " лет:");
         int countItems = 0;
         for (int i = 0; i < employeesArray.length; i++){
-            if (employeesArray[i].age >= age){
-
-                // вызов метода класса Employees для вывода данных в консоль
-                Employees.printEmployeeInfo(employeesArray[i].surname,
-                        employeesArray[i].name, employeesArray[i].patronymic, employeesArray[i].position,
-                        employeesArray[i].email, employeesArray[i].phone, employeesArray[i].salary,
-                        employeesArray[i].age);
+            if (employeesArray[i].getAge() > age){
+                employeesArray[i].printInfo();
                 countItems++;
             }
         }
         if (countItems == 0){
             System.out.println("Нет записей удовлетворяющих условию");
         } else {
-            System.out.println("Кол-во сотрудников: " + countItems);
+            System.out.println("Кол-во записей: " + countItems);
         }
     }
 }
