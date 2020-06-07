@@ -44,6 +44,5 @@ public class Hello {
         dog4.jump(3); // False: ограничение 2 метра
         dog4.swim(40); // True: ограничение 50 метров
 
-
     }
 }
