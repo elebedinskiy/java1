@@ -57,10 +57,12 @@ public class Cat extends Animal {
     }
 
     public void eatFromPlate(Plate plate){
-        if (getAppetite() <= plate.getAmountFoodPlate()){
+        if (getAppetite() <= plate.getAmountFoodPlate() && getSatiety() == false){
             plate.amountFoodDecreased(getAppetite());
             setIsSatiety(); // покушал, значить сытость установить true
             System.out.println(name + " покушал");
+        } else if (getSatiety() == true){
+            System.out.println(name + " сытый и кушать не хочет");
         } else {
             System.out.println("Для " + name + " еды в тарелке не хватило");
         }

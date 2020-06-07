@@ -31,7 +31,15 @@ public class Hello {
         System.out.println("Пополнили тарелку");
         plate1.setFullFood(); // пополнили тарелку
         plate1.info();
+        System.out.println(); // для удобства чтения вывода в консоли
 
+        // все коты ПОВТОРНО пробуют кушают из тарелки
+        for (int i = 0; i < cats.length; i++) {
+            cats[i].eatFromPlate(plate1);
+            cats[i].info();
+            plate1.info();
+            System.out.println(); // для удобства чтения вывода в консоли
+        }
     }
 
     // метод создаст кота с аппетитом от 20 до 50 и сытостью false
