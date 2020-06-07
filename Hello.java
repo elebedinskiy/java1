@@ -1,7 +1,5 @@
 package ru.elebedinskiy.java1;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -10,13 +8,11 @@ public class Hello {
     public static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int userChoice = getNumbeFromScannerAndValid("Выберите игру: 1 - угадай число, 2 - угадай слово.", 1, 2);
+        int userChoice = getNumberFromScannerAndValid("Выберите игру: 1 - угадай число, 2 - угадай слово.", 1, 2);
         System.out.println("Вы выбрали = " + userChoice);
         if (userChoice == 1) {
             gameOne();
-        } else {
-            gameTwo();
-        }
+        } else gameTwo();
     }
 
     public static void gameOne() {
@@ -31,7 +27,7 @@ public class Hello {
                 System.out.println("\nПопыток больше нет. Вы проиграли");
                 break;
             }
-            int userEnterNumber = getNumbeFromScannerAndValid("\nВведите число от 0 до 9", 0, 9);
+            int userEnterNumber = getNumberFromScannerAndValid("\nВведите число от 0 до 9", 0, 9);
             System.out.println("Вы ввели = " + userEnterNumber);
 
             if (userEnterNumber == secretRundomNumber) {
@@ -43,7 +39,7 @@ public class Hello {
                 System.out.println("Вы ввели слишком маленькое число.");
             }
         }
-        int userChoice = getNumbeFromScannerAndValid("\n1 - Играем ещё раз. 0 - нет", 0, 1);
+        int userChoice = getNumberFromScannerAndValid("\n1 - Играем ещё раз. 0 - нет", 0, 1);
         if (userChoice == 1){
             System.out.println("Отлично");
             gameOne();
@@ -63,7 +59,7 @@ public class Hello {
 
         // присвоили строке значение загаданного элемента массива
         String secretRundomWords = words[rand.nextInt(words.length)];
-        System.out.println("Загадали: " + secretRundomWords);
+        System.out.println("Загадали: " + secretRundomWords + " (для самопроверки)"); // по итогам разработки закомментировать
 
         // присвоили строке введённое пользователем значение
         Scanner sc = new Scanner(System.in);
@@ -77,7 +73,7 @@ public class Hello {
         .
          */
 
-        int userChoice = getNumbeFromScannerAndValid("\n1 - Играем ещё раз. 0 - нет", 0, 1);
+        int userChoice = getNumberFromScannerAndValid("\n1 - Играем ещё раз. 0 - нет", 0, 1);
         if (userChoice == 1){
             System.out.println("Отлично");
             gameTwo();
@@ -86,7 +82,8 @@ public class Hello {
         }
     }
 
-    public static int getNumbeFromScannerAndValid(String message, int min, int max) {
+    // метод проведёт валидацию целого числа, введённого пользователем в консоли
+    public static int getNumberFromScannerAndValid(String message, int min, int max) {
         int userEnterNumber; //
         do {
             System.out.println(message);
