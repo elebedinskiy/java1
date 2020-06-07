@@ -2,9 +2,9 @@ package ru.elebedinskiy.java1;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.dnd.Autoscroll;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.nio.file.FileAlreadyExistsException;
 
 public class Window extends JFrame {
     public Window(){
@@ -26,6 +26,9 @@ public class Window extends JFrame {
         JTextField field1 = new JTextField("", 30);
         JTextArea textArea1 = new JTextArea(8,30);
 
+        textArea1.setLineWrap(true); // перенос возможен
+        textArea1.setWrapStyleWord(true); // перенос по словам
+
         // установили компоновщики для слоёв
         setLayout(new BorderLayout());
         panelButtons.setLayout(new GridLayout());
@@ -41,7 +44,7 @@ public class Window extends JFrame {
         panelButtons.add(button3);
         panelTextInOut.add(label1);
         panelTextInOut.add(field1);
-        panelTextInOut.add(textArea1);
+        panelTextInOut.add(new JScrollPane(textArea1)); // многострочное поле будет с полосой прокрутки
         panelTextInOut.add(button4);
 
         setVisible(true);
@@ -50,8 +53,7 @@ public class Window extends JFrame {
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // выводим в консоль какой-то текст
-                System.out.println("Что-то делать ...");
+                textArea1.append("\nЧто-то делать ... ");
             }
         });
 
@@ -76,8 +78,6 @@ public class Window extends JFrame {
         button4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                textArea1.setLineWrap(true); // перенос возможен
-                textArea1.setWrapStyleWord(true); // перенос по словам
                 textArea1.setText("Уважаемый, " + field1.getText() + ", регистрируясь в программе Вы принимаете это соглашение.");
                 button4.setVisible(false);
                 panelTextInOut.add(button5);
